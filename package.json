@@ -1,0 +1,60 @@
+{
+  "name": "@abrova/web-chat",
+  "version": "0.2.0",
+  "description": "AbrovaChat JavaScript/TypeScript SDK for web applications",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "node scripts/gen-version.mjs",
+    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
+    "predev": "node scripts/gen-version.mjs",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "lint": "eslint src --ext .ts",
+    "pretest": "node scripts/gen-version.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "chat",
+    "abrova-chat",
+    "messaging",
+    "realtime",
+    "websocket"
+  ],
+  "author": "Abrova <support@abrova.ir>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Abrova-co/abrova_chat_web_sdk.git"
+  },
+  "homepage": "https://abrova.ir/cloud/abrova-chat",
+  "dependencies": {
+    "centrifuge": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "eslint": "^8.55.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
